@@ -162,7 +162,17 @@ export class AppMenu {
                         target: '_blank'
                     }
                 ]
-            }
+            },
+            {
+  label: 'Administración',
+  items: [
+    {
+      label: 'Usuarios',
+      icon: 'pi pi-users',
+      routerLink: ['/users'],
+    },
+  ],
+}
         ];
     }
 }
