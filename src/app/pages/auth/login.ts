@@ -36,68 +36,75 @@ import { AuthService } from '../../core/services/auth.service';
 
   // MessageService permite mostrar mensajes tipo toast en esta pantalla.
   providers: [MessageService],
-  template: `
-    <!-- Contenedor donde PrimeNG mostrará los mensajes toast. -->
+   template: `
     <p-toast />
 
-    <!-- Estructura visual del login. Puedes conservar aquí estilos de Sakai. -->
-    <div class="flex min-h-screen items-center justify-center bg-surface-100 px-4">
-      <div class="w-full max-w-md rounded-xl bg-surface-0 p-8 shadow">
-        <div class="mb-6 text-center">
-          <h1 class="text-3xl font-bold text-surface-900">WEB II</h1>
-          <p class="mt-2 text-surface-600">Inicia sesión para continuar</p>
-        </div>
-
-        <!--
-          [formGroup]="form" conecta el HTML con el formulario creado en TypeScript.
-          (ngSubmit)="submit()" ejecuta el método submit() al enviar.
-        -->
-        <form class="flex flex-col gap-4" [formGroup]="form" (ngSubmit)="submit()">
-          <div>
-            <label class="mb-2 block font-medium" for="email">Correo</label>
-
-            <!-- formControlName conecta este input con form.controls.email. -->
-            <input id="email" pInputText class="w-full" formControlName="email" />
-
-            <!-- Mensaje visual de validación antes de llamar a NestJS. -->
-            @if (form.controls.email.invalid && form.controls.email.touched) {
-              <small class="text-red-500">Ingresa un correo válido.</small>
-            }
-          </div>
-
-          <div>
-            <label class="mb-2 block font-medium" for="password">Contraseña</label>
-            <!-- Conecta el password visual de PrimeNG con form.controls.password. -->
-            <p-password
-              inputId="password"
-              styleClass="w-full"
-              inputStyleClass="w-full"
-              formControlName="password"
-              [feedback]="false"
-              [toggleMask]="true"
-            />
-            @if (form.controls.password.invalid && form.controls.password.touched) {
-              <small class="text-red-500">La contraseña debe tener mínimo 8 caracteres.</small>
-            }
-          </div>
-
-          <!-- Mientras loading sea true, el botón muestra estado de carga. -->
-          <button
-            pButton
-            type="submit"
-            label="Ingresar"
-            icon="pi pi-sign-in"
-            [loading]="loading"
-          ></button>
-        </form>
-
-        <div class="mt-6 text-center">
-          <!-- Navegación interna de Angular hacia la pantalla de registro. -->
-          <a routerLink="/auth/register" class="text-primary">Crear una cuenta</a>
-        </div>
-      </div>
+    <div class="relative flex min-h-screen items-center justify-center overflow-hidden bg-surface-50 px-4">
+    <!-- Patrón geométrico de fondo -->
+    <div class="pointer-events-none absolute inset-0 opacity-40"
+         style="background-image: radial-gradient(circle at 1px 1px, rgb(99 102 241 / 0.15) 1px, transparent 0);
+                background-size: 32px 32px;">
     </div>
-  `,
+
+    <!-- Manchas de color difuminadas para dar profundidad -->
+    <div class="pointer-events-none absolute -top-24 -left-24 h-96 w-96 rounded-full bg-indigo-300 opacity-50 blur-2xl"></div>
+    <div class="pointer-events-none absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-cyan-300 opacity-50 blur-3xl"></div>
+
+        <div class="relative z-10 w-full max-w-md">
+            <!-- Logo / marca -->
+            <div class="mb-8 text-center">
+                <div class="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-cyan-500 shadow-lg shadow-indigo-200 mb-4">
+                    <i class="pi pi-shield text-white text-2xl"></i>
+                </div>
+                <h1 class="text-3xl font-bold text-surface-900">Bienvenido</h1>
+                <p class="mt-2 text-surface-500">Inicia sesión para continuar</p>
+            </div>
+
+            <!-- Card -->
+            <div class="w-full rounded-2xl bg-white p-8 shadow-xl shadow-surface-200/50 border border-surface-100">
+                <form class="flex flex-col gap-5" [formGroup]="form" (ngSubmit)="submit()">
+                    <div>
+                        <label class="mb-2 block text-sm font-medium text-surface-700" for="email">Correo</label>
+                        <input id="email" pInputText class="w-full" formControlName="email" placeholder="tucorreo@ejemplo.com" />
+                        @if (form.controls.email.invalid && form.controls.email.touched) {
+                            <small class="text-red-500">Ingresa un correo válido.</small>
+                        }
+                    </div>
+
+                    <div>
+                        <label class="mb-2 block text-sm font-medium text-surface-700" for="password">Contraseña</label>
+                        <p-password
+                            inputId="password"
+                            styleClass="w-full"
+                            inputStyleClass="w-full"
+                            formControlName="password"
+                            [feedback]="false"
+                            [toggleMask]="true"
+                            placeholder="••••••••"
+                        />
+                        @if (form.controls.password.invalid && form.controls.password.touched) {
+                            <small class="text-red-500">La contraseña debe tener mínimo 8 caracteres.</small>
+                        }
+                    </div>
+
+                    <button
+                        pButton
+                        type="submit"
+                        label="Ingresar"
+                        icon="pi pi-sign-in"
+                        [loading]="loading"
+                        class="w-full mt-2"
+                    ></button>
+                </form>
+
+                <div class="mt-6 text-center text-sm text-surface-500">
+                    ¿No tienes cuenta?
+                    <a routerLink="/auth/register" class="font-medium text-indigo-600 hover:text-indigo-700">Crea una aquí</a>
+                </div>
+            </div>
+        </div>
+    </div>
+`,
 })
 export class Login {
   // formBuilder crea el formulario reactivo.
