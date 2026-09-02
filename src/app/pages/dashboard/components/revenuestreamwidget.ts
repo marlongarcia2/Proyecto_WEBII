@@ -6,8 +6,8 @@ import { LayoutService } from '@/app/layout/service/layout.service';
     standalone: true,
     selector: 'app-revenue-stream-widget',
     imports: [ChartModule],
-    template: `<div class="card mb-8!">
-        <div class="font-semibold text-xl mb-4">Revenue Stream</div>
+        template: `<div class="rounded-2xl bg-white p-6 shadow-md shadow-surface-200/50 border border-surface-100 mb-8!">
+        <div class="font-bold text-xl text-surface-900 mb-4">Revenue Stream</div>
         <p-chart type="bar" [data]="chartData()" [options]="chartOptions()" class="h-100" />
     </div>`
 })
