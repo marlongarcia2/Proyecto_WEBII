@@ -6,8 +6,8 @@ import { LayoutService } from '@/app/layout/service/layout.service';
     standalone: true,
     selector: 'app-revenue-stream-widget',
     imports: [ChartModule],
-        template: `<div class="rounded-2xl bg-white p-6 shadow-md shadow-surface-200/50 border border-surface-100 mb-8!">
-        <div class="font-bold text-xl text-surface-900 mb-4">Revenue Stream</div>
+            template: `<div class="rounded-2xl p-6 shadow-md border border-yellow-900/30 mb-8!" style="background: #1a1a1a;">
+        <div class="font-bold text-xl text-yellow-500 mb-4">Ingresos Mensuales</div>
         <p-chart type="bar" [data]="chartData()" [options]="chartOptions()" class="h-100" />
     </div>`
 })
@@ -38,28 +38,28 @@ export class RevenueStreamWidget {
         const textColor = documentStyle.getPropertyValue('--text-color');
         const borderColor = documentStyle.getPropertyValue('--surface-border');
         const textMutedColor = documentStyle.getPropertyValue('--text-color-secondary');
-
-        this.chartData.set({
+        
+                this.chartData.set({
             labels: ['Q1', 'Q2', 'Q3', 'Q4'],
             datasets: [
                 {
                     type: 'bar',
-                    label: 'Subscriptions',
-                    backgroundColor: documentStyle.getPropertyValue('--p-primary-400'),
+                    label: 'Cortes',
+                    backgroundColor: '#a16207',
                     data: [4000, 10000, 15000, 4000],
                     barThickness: 32
                 },
                 {
                     type: 'bar',
-                    label: 'Advertising',
-                    backgroundColor: documentStyle.getPropertyValue('--p-primary-300'),
+                    label: 'Barba',
+                    backgroundColor: '#ca8a04',
                     data: [2100, 8400, 2400, 7500],
                     barThickness: 32
                 },
                 {
                     type: 'bar',
-                    label: 'Affiliate',
-                    backgroundColor: documentStyle.getPropertyValue('--p-primary-200'),
+                    label: 'Otros servicios',
+                    backgroundColor: '#eab308',
                     data: [4100, 5200, 3400, 7400],
                     borderRadius: {
                         topLeft: 8,

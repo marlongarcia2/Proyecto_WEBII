@@ -6,71 +6,71 @@ import { MenuModule } from 'primeng/menu';
     standalone: true,
     selector: 'app-notifications-widget',
     imports: [ButtonModule, MenuModule],
-        template: `<div class="rounded-2xl bg-white p-6 shadow-md shadow-surface-200/50 border border-surface-100">
+              template: `<div class="rounded-2xl p-6 shadow-md border border-yellow-900/30" style="background: #1a1a1a;">
         <div class="flex items-center justify-between mb-6">
-            <div class="font-bold text-xl text-surface-900">Notifications</div>
+            <div class="font-bold text-xl text-yellow-500">Notificaciones</div>
             <div>
                 <button pButton type="button" icon="pi pi-ellipsis-v" class="p-button-rounded p-button-text p-button-plain" (click)="menu.toggle($event)"></button>
                 <p-menu #menu [popup]="true" [model]="items"></p-menu>
             </div>
         </div>
 
-        <span class="block text-surface-400 font-semibold text-xs tracking-wide mb-4">TODAY</span>
+        <span class="block text-surface-500 font-semibold text-xs tracking-wide mb-4">HOY</span>
         <ul class="p-0 mx-0 mt-0 mb-6 list-none flex flex-col gap-3">
             <li class="flex items-center">
-                <div class="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-blue-400 to-blue-600 rounded-full mr-4 shrink-0 shadow-md shadow-blue-200">
-                    <i class="pi pi-dollar text-xl! text-white"></i>
+                <div class="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-yellow-500 to-yellow-700 rounded-full mr-4 shrink-0 shadow-md shadow-yellow-900/50">
+                    <i class="pi pi-calendar text-xl! text-black"></i>
                 </div>
-                <span class="text-surface-900 leading-normal"
-                    >Richard Jones
-                    <span class="text-surface-500">has purchased a blue t-shirt for <span class="text-emerald-600 font-bold">$79.00</span></span>
+                <span class="text-surface-100 leading-normal"
+                    >Carlos Ramírez
+                    <span class="text-surface-500">agendó un <span class="text-yellow-500 font-bold">Corte + Barba</span> para las 4:00 PM</span>
                 </span>
             </li>
             <li class="flex items-center">
-                <div class="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-orange-400 to-orange-600 rounded-full mr-4 shrink-0 shadow-md shadow-orange-200">
-                    <i class="pi pi-download text-xl! text-white"></i>
+                <div class="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-yellow-500 to-yellow-700 rounded-full mr-4 shrink-0 shadow-md shadow-yellow-900/50">
+                    <i class="pi pi-check-circle text-xl! text-black"></i>
                 </div>
-                <span class="text-surface-500 leading-normal">Your request for withdrawal of <span class="text-emerald-600 font-bold">$2500.00</span> has been initiated.</span>
+                <span class="text-surface-500 leading-normal">Cita con <span class="text-yellow-500 font-bold">Andrés Peña</span> completada exitosamente.</span>
             </li>
         </ul>
 
-        <span class="block text-surface-400 font-semibold text-xs tracking-wide mb-4">YESTERDAY</span>
+        <span class="block text-surface-500 font-semibold text-xs tracking-wide mb-4">AYER</span>
         <ul class="p-0 m-0 list-none mb-6 flex flex-col gap-3">
             <li class="flex items-center">
-                <div class="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-blue-400 to-blue-600 rounded-full mr-4 shrink-0 shadow-md shadow-blue-200">
-                    <i class="pi pi-dollar text-xl! text-white"></i>
+                <div class="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-yellow-500 to-yellow-700 rounded-full mr-4 shrink-0 shadow-md shadow-yellow-900/50">
+                    <i class="pi pi-calendar text-xl! text-black"></i>
                 </div>
-                <span class="text-surface-900 leading-normal"
+                <span class="text-surface-100 leading-normal"
                     >Keyser Wick
-                    <span class="text-surface-500">has purchased a black jacket for <span class="text-emerald-600 font-bold">$59.00</span></span>
+                    <span class="text-surface-500">agendó un <span class="text-yellow-500 font-bold">Afeitado Tradicional</span> para mañana</span>
                 </span>
             </li>
             <li class="flex items-center">
-                <div class="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-pink-400 to-pink-600 rounded-full mr-4 shrink-0 shadow-md shadow-pink-200">
-                    <i class="pi pi-question text-xl! text-white"></i>
+                <div class="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-yellow-500 to-yellow-700 rounded-full mr-4 shrink-0 shadow-md shadow-yellow-900/50">
+                    <i class="pi pi-question-circle text-xl! text-black"></i>
                 </div>
-                <span class="text-surface-900 leading-normal"
+                <span class="text-surface-100 leading-normal"
                     >Jane Davis
-                    <span class="text-surface-500">has posted a new questions about your product.</span>
+                    <span class="text-surface-500">preguntó sobre disponibilidad de horarios.</span>
                 </span>
             </li>
         </ul>
-        <span class="block text-surface-400 font-semibold text-xs tracking-wide mb-4">LAST WEEK</span>
+        <span class="block text-surface-500 font-semibold text-xs tracking-wide mb-4">ÚLTIMA SEMANA</span>
         <ul class="p-0 m-0 list-none flex flex-col gap-3">
             <li class="flex items-center">
-                <div class="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full mr-4 shrink-0 shadow-md shadow-emerald-200">
-                    <i class="pi pi-arrow-up text-xl! text-white"></i>
+                <div class="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-yellow-500 to-yellow-700 rounded-full mr-4 shrink-0 shadow-md shadow-yellow-900/50">
+                    <i class="pi pi-arrow-up text-xl! text-black"></i>
                 </div>
-                <span class="text-surface-900 leading-normal">Your revenue has increased by <span class="text-emerald-600 font-bold">25%</span>.</span>
+                <span class="text-surface-100 leading-normal">Los ingresos aumentaron un <span class="text-yellow-500 font-bold">25%</span>.</span>
             </li>
             <li class="flex items-center">
-                <div class="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-purple-400 to-purple-600 rounded-full mr-4 shrink-0 shadow-md shadow-purple-200">
-                    <i class="pi pi-heart text-xl! text-white"></i>
+                <div class="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-yellow-500 to-yellow-700 rounded-full mr-4 shrink-0 shadow-md shadow-yellow-900/50">
+                    <i class="pi pi-star text-xl! text-black"></i>
                 </div>
-                <span class="text-surface-900 leading-normal"><span class="text-emerald-600 font-bold">12</span> users have added your products to their wishlist.</span>
+                <span class="text-surface-100 leading-normal"><span class="text-yellow-500 font-bold">12</span> clientes nuevos se registraron esta semana.</span>
             </li>
         </ul>
-    </div>`
+    </div>`  
 })
 export class NotificationsWidget {
     items = [

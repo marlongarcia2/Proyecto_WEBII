@@ -39,7 +39,7 @@ import type { User, UserRole } from '../../core/models/user.models';
       <p-toolbar styleClass="mb-4">
         <ng-template #start>
           <div>
-            <h2 class="m-0 text-2xl font-semibold">Usuarios</h2>
+            <h2 class="m-0 text-2xl font-semibold" style="color: #eab308;">Usuarios</h2>
             <p class="m-0 text-surface-500">Administración básica de usuarios</p>
           </div>
         </ng-template>
