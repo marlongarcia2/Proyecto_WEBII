@@ -14,6 +14,7 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { ApiErrorService } from '../../core/services/api-error.service';
 import { UsersService } from '../../core/services/users.service';
 import type { User, UserRole } from '../../core/models/user.models';
+import { DatePickerModule } from 'primeng/datepicker';
 
 @Component({
   selector: 'app-users-page',
@@ -25,6 +26,7 @@ import type { User, UserRole } from '../../core/models/user.models';
     InputTextModule,
     PasswordModule,
     ReactiveFormsModule,
+    DatePickerModule,
     SelectModule,
     TableModule,
     TagModule,
@@ -140,6 +142,26 @@ import type { User, UserRole } from '../../core/models/user.models';
             />
           </div>
         }
+         
+                <div>
+          <label class="mb-2 block font-medium" for="phone">Teléfono</label>
+          <input id="phone" pInputText class="w-full" formControlName="phone" />
+        </div>
+
+        <div>
+          <label class="mb-2 block font-medium" for="birthDate">Fecha de nacimiento</label>
+          <p-datepicker
+            inputId="birthDate"
+            styleClass="w-full"
+            formControlName="birthDate"
+            dateFormat="yy-mm-dd"
+          />
+        </div>
+
+        <div>
+          <label class="mb-2 block font-medium" for="preferredBarber">Barbero preferido (opcional)</label>
+          <input id="preferredBarber" pInputText class="w-full" formControlName="preferredBarber" />
+        </div>
 
         <div>
           <label class="mb-2 block font-medium" for="role">Rol</label>
@@ -185,6 +207,9 @@ export class UsersPage implements OnInit {
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.minLength(8)]],
     role: ['USER' as UserRole, [Validators.required]],
+    phone: ['', [Validators.required]],
+    birthDate: ['', [Validators.required]],
+    preferredBarber: [''],
   });
 
   ngOnInit() {
@@ -213,6 +238,9 @@ export class UsersPage implements OnInit {
       email: '',
       password: '',
       role: 'USER',
+      phone: '',
+      birthDate: '',
+      preferredBarber: '',
     });
     this.form.controls.password.setValidators([Validators.required, Validators.minLength(8)]);
     this.form.controls.password.updateValueAndValidity();
@@ -226,6 +254,9 @@ export class UsersPage implements OnInit {
       email: user.email,
       password: '',
       role: user.role,
+      phone: user.phone,
+      birthDate: user.birthDate,
+      preferredBarber: user.preferredBarber ?? '',
     });
     this.form.controls.password.clearValidators();
     this.form.controls.password.updateValueAndValidity();
@@ -240,6 +271,7 @@ export class UsersPage implements OnInit {
 
     this.saving = true;
     const value = this.form.getRawValue();
+    const birthDate = value.birthDate ? new Date(value.birthDate).toISOString() : '';
 
     if (this.editingUserId) {
       this.usersService
@@ -247,6 +279,9 @@ export class UsersPage implements OnInit {
           name: value.name,
           email: value.email,
           role: value.role,
+          phone: value.phone,
+          birthDate: birthDate,
+          preferredBarber: value.preferredBarber,
         })
         .subscribe({
           next: () => this.afterSave('Usuario actualizado correctamente'),
@@ -262,6 +297,9 @@ export class UsersPage implements OnInit {
         email: value.email,
         password: value.password,
         role: value.role,
+        phone: value.phone,
+        birthDate: value.birthDate,
+        preferredBarber: value.preferredBarber,
       })
       .subscribe({
         next: () => this.afterSave('Usuario creado correctamente'),

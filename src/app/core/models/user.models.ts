@@ -8,6 +8,9 @@ export type User = {
   name: string;
   role: UserRole;
   isActive: boolean;
+  phone: string;
+  birthDate: string;
+  preferredBarber?: string;
   createdAt: string;
   updatedAt: string;
 };
@@ -18,6 +21,9 @@ export type CreateUserRequest = {
   name: string;
   password: string;
   role?: UserRole;
+  phone: string;
+  birthDate: string;
+  preferredBarber?: string;
 };
 
 // Datos para actualizar usuarios.
@@ -28,4 +34,7 @@ export type UpdateUserRequest = {
   password?: string;
   role?: UserRole;
   isActive?: boolean;
+  phone?: string;
+  birthDate?: string;
+  preferredBarber?: string;
 };

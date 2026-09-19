@@ -5,6 +5,7 @@ import { AppTopbar } from './app.topbar';
 import { AppSidebar } from './app.sidebar';
 import { AppFooter } from './app.footer';
 import { LayoutService } from '@/app/layout/service/layout.service';
+import { CurrentUserService } from '@/app/core/services/current-user.service';
 
 @Component({
     selector: 'app-layout',
@@ -24,8 +25,12 @@ import { LayoutService } from '@/app/layout/service/layout.service';
 })
 export class AppLayout {
     layoutService = inject(LayoutService);
+    private readonly currentUserService = inject(CurrentUserService);
 
-    constructor() {
+
+    constructor() { 
+        this.currentUserService.load(); // Carga el usuario autenticado al iniciar el layout
+        
         effect(() => {
             const state = this.layoutService.layoutState();
             if (state.mobileMenuActive) {
